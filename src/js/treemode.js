@@ -8,6 +8,7 @@ var ContextMenu = require('./ContextMenu');
 var Node = require('./Node');
 var ModeSwitcher = require('./ModeSwitcher');
 var util = require('./util');
+var SelectBox = require('./SelectBox');
 
 // create a mixin with the functions for tree mode
 var treemode = {};
@@ -30,6 +31,7 @@ var treemode = {};
  *                                                        characters are escaped.
  *                                                        false by default.
  *                               {Object} schema          A JSON Schema for validation
+ *                               {Object} select          Enable select box.//示例按钮选择模块 hyg
  * @private
  */
 treemode.create = function (container, options) {
@@ -742,6 +744,11 @@ treemode._createFrame = function () {
   if (this.options.search) {
     this.searchBox = new SearchBox(this, this.menu);
   }
+	
+	//create select box
+	if(this.options.select) {//by hyg
+		this.selectBox = new SelectBox(this, this.menu, this.options.select[0], this.options.select[1]);
+	}
 };
 
 /**

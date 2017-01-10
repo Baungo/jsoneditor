@@ -129,7 +129,8 @@ JSONEditor.prototype._create = function (container, options, json) {
   this.container = container;
   this.options = options || {};
   this.json = json || {};
-
+	this.select = options.select;
+	
   var mode = this.options.mode || 'tree';
   this.setMode(mode);
 };
